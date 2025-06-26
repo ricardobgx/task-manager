@@ -1,0 +1,4 @@
+networks:
+  task-manager-network:
+    name: task-manager-network
+    driver: bridge
