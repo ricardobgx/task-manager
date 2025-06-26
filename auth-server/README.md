@@ -1,6 +1,6 @@
 # Authorization Server
 
-Authorization Server application and database.
+Authorization Server module.
 
 ## Configuration
 
@@ -13,7 +13,7 @@ You need to install to following tools in your machine:
 
 ### Environment variables
 
-Please refer to the application and database README file to set the environment variables correctly.
+Please refer to the application (app folder) and database (db folder) README file to set the environment variables correctly.
 
 ## Run
 
