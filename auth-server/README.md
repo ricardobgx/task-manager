@@ -1,17 +1,6 @@
-# Task manager
+# Authorization Server
 
-Manage tasks.
-
-## Modules
-
-- [x] Authorization Server
-- [ ] Backend for Frontend
-- [ ] Reverse Proxy
-- [ ] File Server
-- [ ] Profiles API
-- [ ] Profiles DB
-- [ ] Tasks API
-- [ ] Tasks DB
+Authorization Server application and database.
 
 ## Configuration
 
@@ -24,7 +13,7 @@ You need to install to following tools in your machine:
 
 ### Environment variables
 
-Please refer to each module's README file to set the environment variables correctly.
+Please refer to the application and database README file to set the environment variables correctly.
 
 ## Run
 

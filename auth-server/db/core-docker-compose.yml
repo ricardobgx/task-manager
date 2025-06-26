@@ -1,0 +1,19 @@
+services:
+  auth-server-db:
+    container_name: task-manager-auth-server-db
+    image: postgres:alpine
+    restart: always
+    environment:
+      POSTGRES_USER: ${TASK_MANAGER_AUTH_SERVER_DB_ADMIN_USER}
+      POSTGRES_PASSWORD: ${TASK_MANAGER_AUTH_SERVER_DB_ADMIN_PASS}
+      POSTGRES_DB: ${TASK_MANAGER_AUTH_SERVER_DB_DB_NAME}
+    volumes:
+      - auth-server-db-data:/var/lib/postgresql/data
+    networks:
+      - task-manager-network
+    ports:
+      - ${TASK_MANAGER_AUTH_SERVER_DB_PORT}:5432
+
+volumes:
+  auth-server-db-data:
+    name: task-manager-auth-server-db-data

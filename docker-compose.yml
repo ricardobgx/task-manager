@@ -1,2 +1,3 @@
 include:
   - './common-docker-compose.yml'
+  - './auth-server/core-docker-compose.yml'

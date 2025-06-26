@@ -1,0 +1,29 @@
+services:
+  auth-server-app:
+    container_name: task-manager-auth-server-app
+    image: keycloak/keycloak
+    restart: always
+    command:
+      - start-dev
+    environment:
+      KC_BOOTSTRAP_ADMIN_USERNAME: ${TASK_MANAGER_AUTH_SERVER_APP_ADMIN_USER}
+      KC_BOOTSTRAP_ADMIN_PASSWORD: ${TASK_MANAGER_AUTH_SERVER_APP_ADMIN_USER}
+      KC_HTTP_PORT: ${TASK_MANAGER_AUTH_SERVER_APP_PORT}
+      KC_HTTP_RELATIVE_PATH: /
+      KC_HTTP_ENABLED: true
+      KC_HEALTH_ENABLED: true
+      KC_METRICS_ENABLED: true
+      KC_DB: postgres
+      KC_DB_URL: ${TASK_MANAGER_AUTH_SERVER_APP_DB_URL}
+      KC_DB_USERNAME: ${TASK_MANAGER_AUTH_SERVER_APP_DB_USER}
+      KC_DB_PASSWORD: ${TASK_MANAGER_AUTH_SERVER_APP_DB_PASS}
+    volumes:
+      - auth-server-app-data:/opt/keycloak/data
+    networks:
+      - task-manager-network
+    ports:
+      - ${TASK_MANAGER_AUTH_SERVER_APP_PORT}:${TASK_MANAGER_AUTH_SERVER_APP_PORT}
+
+volumes:
+  auth-server-app-data:
+    name: task-manager-auth-server-app-data
