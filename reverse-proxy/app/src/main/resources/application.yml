@@ -1,0 +1,27 @@
+server:
+  port: ${TASK_MANAGER_REVERSE_PROXY_PORT}
+
+spring:
+  application:
+    name: reverse-proxy
+  cloud:
+    gateway:
+      default-filters:
+        - DedupeResponseHeaders=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+      routes:
+        - id: auth-server
+          uri: ${TASK_MANAGER_REVERSE_PROXY_AUTH_SERVER_URL}
+          predicates:
+            - Path=/auth/**
+          filters:
+            - StripPrefix=1
+        - id: web
+          uri: ${TASK_MANAGER_REVERSE_PROXY_WEB_URL}
+          predicates:
+            - Path=/web/**
+        - id: bff
+          uri: ${TASK_MANAGER_REVERSE_PROXY_BFF_URL}
+          predicates:
+            - Path=/bff/**
+          filters:
+            - StripPrefix=1

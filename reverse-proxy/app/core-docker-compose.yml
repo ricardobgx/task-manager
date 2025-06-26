@@ -1,0 +1,15 @@
+services:
+  reverse-proxy-app:
+    container_name: task-manager-reverse-proxy-app
+    build: .
+    image: ricardobgx/task-manager-reverse-proxy-app
+    restart: always
+    environment:
+      TASK_MANAGER_REVERSE_PROXY_PORT: ${TASK_MANAGER_REVERSE_PROXY_APP_PORT}
+      TASK_MANAGER_REVERSE_PROXY_AUTH_SERVER_URL: ${TASK_MANAGER_REVERSE_PROXY_APP_AUTH_SERVER_URL}
+      TASK_MANAGER_REVERSE_PROXY_BFF_URL: ${TASK_MANAGER_REVERSE_PROXY_APP_BFF_URL}
+      TASK_MANAGER_REVERSE_PROXY_WEB_URL: ${TASK_MANAGER_REVERSE_PROXY_APP_WEB_URL}
+    networks:
+      - task-manager-network
+    ports:
+      - ${TASK_MANAGER_REVERSE_PROXY_APP_PORT}:${TASK_MANAGER_REVERSE_PROXY_APP_PORT}
