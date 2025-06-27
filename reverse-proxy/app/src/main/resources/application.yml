@@ -13,8 +13,6 @@ spring:
           uri: ${TASK_MANAGER_REVERSE_PROXY_AUTH_SERVER_URL}
           predicates:
             - Path=/auth/**
-          filters:
-            - StripPrefix=1
         - id: web
           uri: ${TASK_MANAGER_REVERSE_PROXY_WEB_URL}
           predicates:
