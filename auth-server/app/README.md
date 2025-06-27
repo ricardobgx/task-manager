@@ -17,7 +17,8 @@ You need to set the environment variables below:
 
 - **TASK_MANAGER_AUTH_SERVER_APP_ADMIN_USER:** Admin user (ex: admin);
 - **TASK_MANAGER_AUTH_SERVER_APP_ADMIN_USER:** Admin password (ex: admin);
-- **TASK_MANAGER_AUTH_SERVER_APP_PORT:** HTTP port (ex: 4001);
+- **TASK_MANAGER_AUTH_SERVER_APP_PORT:** HTTP port (ex: 4101);
+- **TASK_MANAGER_AUTH_SERVER_APP_URL:** Self URL using reverse proxy (ex: http://192.168.0.0:4001/auth);
 - **TASK_MANAGER_AUTH_SERVER_APP_DB_URL:** Database JDBC URL (ex: jdbc:postgresql://auth-server-db/auth_server);
 - **TASK_MANAGER_AUTH_SERVER_APP_DB_USER:** Database user (ex: admin);
 - **TASK_MANAGER_AUTH_SERVER_APP_DB_PASS:** Database password (ex: admin).
