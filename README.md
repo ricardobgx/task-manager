@@ -5,13 +5,20 @@ Manage tasks.
 ## Modules
 
 - [x] Authorization Server
+  - [x] Application
+  - [x] Database
 - [x] Backend for Frontend
+  - [x] Application
 - [x] Reverse Proxy
+  - [x] Application
 - [ ] File Server
-- [ ] Profiles API
-- [ ] Profiles DB
-- [ ] Tasks API
-- [ ] Tasks DB
+  - [ ] Application
+- [ ] Profiles
+  - [ ] API
+  - [ ] Database
+- [ ] Tasks
+  - [ ] API
+  - [ ] Database
 
 ## Configuration
 
