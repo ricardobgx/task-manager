@@ -1,0 +1,74 @@
+server:
+  port: ${TASK_MANAGER_BFF_PORT}
+
+spring:
+  application:
+    name: bff
+  cloud:
+    gateway:
+      routes:
+        - id: profiles-api
+          uri: ${TASK_MANAGER_BFF_PROFILES_API_URL}
+          predicates:
+            - Path=/profiles-api/**
+          filters:
+            - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+            - TokenRelay=
+            - SaveSession
+            - StripPrefix=1
+        - id: tasks-api
+          uri: ${TASK_MANAGER_BFF_TASKS_API_URL}
+          predicates:
+            - Path=/tasks-api/**
+          filters:
+            - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+            - TokenRelay=
+            - SaveSession
+            - StripPrefix=1
+  security:
+    oauth2:
+      client:
+        provider:
+          task-manager:
+            issuer-uri: ${TASK_MANAGER_BFF_ISSUER_URL} # Using reverse proxy url
+        registration:
+          task-manager:
+            provider: task-manager
+            authorization-grant-type: authorization_code
+            client-id: ${TASK_MANAGER_BFF_AUTH_SERVER_CLIENT_ID}
+            client-secret: ${TASK_MANAGER_BFF_AUTH_SERVER_CLIENT_SECRET}
+            scope: openid,profile,email,offline_access
+
+com:
+  c4-soft:
+    springaddons:
+      oidc:
+        ops:
+          - iss: ${TASK_MANAGER_BFF_ISSUER_URL} # Using reverse proxy url
+            authorities:
+              - path: $.realm_access.roles
+            aud:
+        # SecurityFilterChain with oauth2Login()
+        client:
+          client-uri: ${TASK_MANAGER_BFF_URL} # Self url using reverse proxy url
+          security-matchers:
+            - /profiles-api/**
+            - /tasks-api/**
+            - /login/**
+            - /oauth2/**
+            - /logout
+          permit-all:
+            - /profiles-api/**
+            - /tasks-api/**
+            - /login/**
+            - /oauth2/**
+          csrf: cookie-accessible-from-js
+          oauth2-redirections:
+            rp-initiated-logout: ACCEPTED # Respond the RP-Initiated logout with 201 instead of 3xx
+        # SecurityFilterChain with oauth2ResourceServer()
+        resourceserver:
+          permit-all:
+            - /login-options
+            - /error
+            - /actuator/health/readiness
+            - /actuator/health/liveness

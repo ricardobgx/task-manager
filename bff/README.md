@@ -1,17 +1,6 @@
-# Task manager
+# Backend for Frontend
 
-Manage tasks.
-
-## Modules
-
-- [x] Authorization Server
-- [x] Backend for Frontend
-- [x] Reverse Proxy
-- [ ] File Server
-- [ ] Profiles API
-- [ ] Profiles DB
-- [ ] Tasks API
-- [ ] Tasks DB
+Backend for Frontend module.
 
 ## Configuration
 
@@ -24,7 +13,7 @@ You need to install to following tools in your machine:
 
 ### Environment variables
 
-Please refer to each module's README file to set the environment variables correctly.
+Please refer to the application (app folder) README file to set the environment variables correctly.
 
 ## Run
 
