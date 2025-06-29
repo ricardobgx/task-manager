@@ -1,24 +1,6 @@
-# Task manager
+# File Server
 
-Manage tasks.
-
-## Modules
-
-- [x] Authorization Server
-  - [x] Application
-  - [x] Database
-- [x] Backend for Frontend
-  - [x] Application
-- [x] Reverse Proxy
-  - [x] Application
-- [x] File Server
-  - [x] Application
-- [ ] Profiles
-  - [ ] API
-  - [ ] Database
-- [ ] Tasks
-  - [ ] API
-  - [ ] Database
+File server module.
 
 ## Configuration
 
@@ -31,7 +13,7 @@ You need to install to following tools in your machine:
 
 ### Environment variables
 
-Please refer to each module's README file to set the environment variables correctly.
+Please refer to the application (app folder) README file to set the environment variables correctly.
 
 ## Run
 

@@ -1,0 +1,19 @@
+services:
+  file-server-app:
+    container_name: task-manager-file-server-app
+    image: minio/minio
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: ${TASK_MANAGER_FILE_SERVER_APP_ADMIN_USER}
+      MINIO_ROOT_PASSWORD: ${TASK_MANAGER_FILE_SERVER_APP_ADMIN_PASS}
+    volumes:
+      - file-server-app-data:/data
+    networks:
+      - task-manager-network
+    ports:
+      - '${TASK_MANAGER_FILE_SERVER_APP_PORT}:9000'
+      - '${TASK_MANAGER_FILE_SERVER_APP_UI_PORT}:9001'
+
+volumes:
+  file-server-app-data:
+    name: task-manager-file-server-app-data
