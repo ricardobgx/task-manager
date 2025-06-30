@@ -8,18 +8,20 @@ spring:
     gateway:
       default-filters:
         - DedupeResponseHeaders=Access-Control-Allow-Credentials Access-Control-Allow-Origin
-      routes:
-        - id: auth-server
-          uri: ${TASK_MANAGER_REVERSE_PROXY_AUTH_SERVER_URL}
-          predicates:
-            - Path=/auth/**
-        - id: web
-          uri: ${TASK_MANAGER_REVERSE_PROXY_WEB_URL}
-          predicates:
-            - Path=/web/**
-        - id: bff
-          uri: ${TASK_MANAGER_REVERSE_PROXY_BFF_URL}
-          predicates:
-            - Path=/bff/**
-          filters:
-            - StripPrefix=1
+      server:
+        webflux:
+          routes:
+            - id: auth-server
+              uri: ${TASK_MANAGER_REVERSE_PROXY_AUTH_SERVER_URL}
+              predicates:
+                - Path=/auth/**
+            - id: web
+              uri: ${TASK_MANAGER_REVERSE_PROXY_WEB_URL}
+              predicates:
+                - Path=/web/**
+            - id: bff
+              uri: ${TASK_MANAGER_REVERSE_PROXY_BFF_URL}
+              predicates:
+                - Path=/bff/**
+              filters:
+                - StripPrefix=1
