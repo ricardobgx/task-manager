@@ -19,6 +19,8 @@ Manage tasks.
 - [ ] Tasks
   - [ ] API
   - [ ] Database
+- [ ] Web
+  - [ ] Application
 
 ## Configuration
 
@@ -48,3 +50,17 @@ To stop the application You just need to run the command below inside this folde
 ```shell
 docker compose down
 ```
+
+## Ports mapping
+
+Below You'll find the ports mapping of the project:
+
+| Module               | Ports                 |
+| -------------------- | --------------------- |
+| Reverse Proxy        | 4001                  |
+| Authorization Server | 4101                  |
+| Backend for Frontend | 4201                  |
+| File Server          | 4301 (api), 4302 (ui) |
+| Profiles             | 4401 (api), 4402 (db) |
+| Tasks                | 4501 (api), 4502 (db) |
+| Web                  | 4601                  |
