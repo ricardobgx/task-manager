@@ -6,25 +6,27 @@ spring:
     name: bff
   cloud:
     gateway:
-      routes:
-        - id: profiles-api
-          uri: ${TASK_MANAGER_BFF_PROFILES_API_URL}
-          predicates:
-            - Path=/profiles-api/**
-          filters:
-            - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
-            - TokenRelay=
-            - SaveSession
-            - StripPrefix=1
-        - id: tasks-api
-          uri: ${TASK_MANAGER_BFF_TASKS_API_URL}
-          predicates:
-            - Path=/tasks-api/**
-          filters:
-            - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
-            - TokenRelay=
-            - SaveSession
-            - StripPrefix=1
+      server:
+        webflux:
+          routes:
+            - id: profiles-api
+              uri: ${TASK_MANAGER_BFF_PROFILES_API_URL}
+              predicates:
+                - Path=/api/profiles-api/**
+              filters:
+                - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+                - TokenRelay=
+                - SaveSession
+                - StripPrefix=2
+            - id: tasks-api
+              uri: ${TASK_MANAGER_BFF_TASKS_API_URL}
+              predicates:
+                - Path=/api/tasks-api/**
+              filters:
+                - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+                - TokenRelay=
+                - SaveSession
+                - StripPrefix=2
   security:
     oauth2:
       client:
@@ -52,14 +54,12 @@ com:
         client:
           client-uri: ${TASK_MANAGER_BFF_URL} # Self url using reverse proxy url
           security-matchers:
-            - /profiles-api/**
-            - /tasks-api/**
+            - /api/**
             - /login/**
             - /oauth2/**
             - /logout
           permit-all:
-            - /profiles-api/**
-            - /tasks-api/**
+            - /api/**
             - /login/**
             - /oauth2/**
           csrf: cookie-accessible-from-js
