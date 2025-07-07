@@ -1,0 +1,19 @@
+services:
+  profiles-db:
+    container_name: task-manager-profiles-db
+    image: postgres:alpine
+    restart: always
+    environment:
+      POSTGRES_USER: ${TASK_MANAGER_PROFILES_DB_ADMIN_USER}
+      POSTGRES_PASSWORD: ${TASK_MANAGER_PROFILES_DB_ADMIN_PASS}
+      POSTGRES_DB: ${TASK_MANAGER_PROFILES_DB_DB_NAME}
+    volumes:
+      - profiles-db-data:/var/lib/postgresql/data
+    networks:
+      - task-manager-network
+    ports:
+      - ${TASK_MANAGER_PROFILES_DB_PORT}:5432
+
+volumes:
+  profiles-db-data:
+    name: task-manager-profiles-db-data

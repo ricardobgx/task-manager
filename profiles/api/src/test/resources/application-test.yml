@@ -1,0 +1,20 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/tm_profiles_test?user=postgres&password=postgres&ssl=false
+
+com:
+  c4-soft:
+    springaddons:
+      oidc:
+        ops:
+          - iss: http://localhost:4001/auth/realms/task-manager
+            username-claim: $.preferred_username
+            authorities:
+              - path: $.realm_access.roles
+            aud:
+        resourceserver:
+          security-matchers:
+            - /me

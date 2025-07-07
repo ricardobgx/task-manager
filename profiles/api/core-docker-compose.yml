@@ -1,0 +1,14 @@
+services:
+  profiles-api:
+    container_name: task-manager-profiles-api
+    build: .
+    image: ricardobgx/task-manager-profiles-api
+    restart: always
+    environment:
+      TASK_MANAGER_PROFILES_API_PORT: ${TASK_MANAGER_PROFILES_API_PORT}
+      TASK_MANAGER_PROFILES_API_DATASOURCE_URL: ${TASK_MANAGER_PROFILES_API_DATASOURCE_URL}
+      TASK_MANAGER_PROFILES_API_ISSUER_URL: ${TASK_MANAGER_PROFILES_API_ISSUER_URL}
+    networks:
+      - task-manager-network
+    ports:
+      - ${TASK_MANAGER_PROFILES_API_PORT}:${TASK_MANAGER_PROFILES_API_PORT}

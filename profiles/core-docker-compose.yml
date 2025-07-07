@@ -1,0 +1,3 @@
+include:
+  - './api/core-docker-compose.yml'
+  - './db/core-docker-compose.yml'

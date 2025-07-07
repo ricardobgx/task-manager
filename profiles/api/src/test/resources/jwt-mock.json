@@ -1,0 +1,12 @@
+{
+  "iss": "http://localhost:4001/auth/realms/task-manager",
+  "sub": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjQwMDEvYXV0aC9yZWFsbXMvdGFzay1tYW5hZ2VyIiwic3ViIjoia2F0em9AdGFza21hbmFnZXIuY29tIiwicHJlZmVycmVkX3VzZXJuYW1lIjoia2F0em8iLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsidXNlciJdfSwiZW1haWwiOiJrYXR6b0B0YXNrbWFuYWdlci5jb20iLCJzY29wZSI6Im9wZW5pZCBlbWFpbCJ9.J02y4fNuhpYyf22eEOZ2dk27PMiVZmj8DuGOfdn61jc",
+  "preferred_username": "katzo",
+  "realm_access": {
+    "roles": [
+      "user"
+    ]
+  },
+  "email": "katzo@taskmanager.com",
+  "scope": "openid email"
+}

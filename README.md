@@ -13,9 +13,9 @@ Manage tasks.
   - [x] Application
 - [x] File Server
   - [x] Application
-- [ ] Profiles
-  - [ ] API
-  - [ ] Database
+- [x] Profiles
+  - [x] API
+  - [x] Database
 - [ ] Tasks
   - [ ] API
   - [ ] Database

@@ -1,0 +1,24 @@
+server:
+  port: ${TASK_MANAGER_PROFILES_API_PORT}
+
+spring:
+  application:
+    name: profiles-api
+  datasource:
+    url: ${TASK_MANAGER_PROFILES_API_DATASOURCE_URL}
+  jpa:
+    hibernate:
+      ddl-auto: update
+com:
+  c4-soft:
+    springaddons:
+      oidc:
+        ops:
+          - iss: ${TASK_MANAGER_PROFILES_API_ISSUER_URL}
+            username-claim: $.preferred_username
+            authorities:
+              - path: $.realm_access.roles
+            aud:
+        resourceserver:
+          security-matchers:
+            - /me

@@ -4,3 +4,4 @@ include:
   - './reverse-proxy/core-docker-compose.yml'
   - './bff/core-docker-compose.yml'
   - './file-server/core-docker-compose.yml'
+  - './profiles/core-docker-compose.yml'
